@@ -119,7 +119,7 @@ public class PaymentTest extends BaseTest {
                 .verifyPaymentSuccessMessage(testData.getJsonData("messages.paymentSuccess"));
     }
 
-    @Test(dependsOnMethods = {"paymentTest","checkout","loginToAccount","registerNewAccount"})
+    @Test(dependsOnMethods = {"paymentTest","checkout","addProductToCart","loginToAccount","registerNewAccount"})
     public void deleteAccountAsPostCondition() {
         new UserManagementAPI()
                 .deleteUserAccount( testData.getJsonData("email") + timestamp + "@gmail.com",
