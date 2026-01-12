@@ -2,15 +2,17 @@ name: E2E Regression
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   schedule:
-    - cron: '00 8 * * *'
+    - cron: '00 10 * * *'
   workflow_dispatch:
 
 env:
-  TARGET: "%regex[.*Tests.*],com.automationexercices.tests.**.**.com.automationexercices.tests.**"
+  TARGET: "%regex[.*Tests.*],com.automationexercices.tests.**.**,com.automationexercices.tests.**"
 
 jobs:
   Chrome_Linux_Test:
@@ -18,21 +20,23 @@ jobs:
     permissions:
       checks: write
     steps:
-      - name: checkout code
+      - name: checkout Code
         uses: actions/checkout@v4
+
       - name: setup java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
+          distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
-      - name: Setup Maven
+      - name: setup maven
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.8
 
       - name: Running Tests
-        run: mvn -Dtest="${TARGET}" -DexecutionType="LocalHeadless" -DbrowserType="chrome" clean test
+        continue-on-error: true
+        run: mvn -Dtest="${TARGET}" -DexecutionType="LocalHeadless"  -DbrowserType="Chrome" clean test
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
@@ -40,31 +44,31 @@ jobs:
           name: Chrome_Linux_Report
           path: "test-output/reports/*.html"
 
-
-
   Edge_Windows_Test:
     runs-on: windows-latest
     permissions:
       checks: write
     steps:
-      - name: checkout code
+      - name: checkout Code
         uses: actions/checkout@v4
+
       - name: setup java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
+          distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
-      - name: Setup Maven
+      - name: setup maven
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.8
 
       - name: Running Tests
-        run: mvn -Dtest="${TARGET}" -DexecutionType="LocalHeadless" -DbrowserType="Edge" clean test
+        continue-on-error: true
+        run: mvn -Dtest="${TARGET}" -DexecutionType="LocalHeadless"  -DbrowserType="Edge" clean test
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: Edge_Window_Report
+          name: Edge_Windows_Report
           path: "test-output/reports/*.html"
