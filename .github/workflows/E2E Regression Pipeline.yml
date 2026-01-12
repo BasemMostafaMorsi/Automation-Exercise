@@ -24,9 +24,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'
+          java-version: '17'
 
-      - name: Set up Maven
+      - name: Setup Maven
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.8
@@ -53,9 +53,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'
+          java-version: '17'
 
-      - name: Set up Maven
+      - name: Setup Maven
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.8
