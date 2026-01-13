@@ -1,0 +1,19 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "00:00"
+      timezone: "America/Cairo"
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "00:00"
+      timezone: "America/Cairo"
