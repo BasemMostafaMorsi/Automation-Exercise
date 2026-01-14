@@ -29,6 +29,7 @@ public class UserManagementAPI {
     private static final String deleteAccount_endpoint = "/deleteAccount";
     private static final String getProductList_endpoint = "/productsList";
     private static final String postProductList_endpoint = "/productsList";
+    private static final String getBrandsList = "/brandsList";
 
     //api methods
     @Step("Create a new user account with full details")
@@ -122,6 +123,12 @@ public class UserManagementAPI {
         response = requestSpecification.post(postProductList_endpoint);
         LogsManager.info(response.asPrettyString());
         verification.Equals(response.jsonPath().get("message"), "This request method is not supported." , "error response");
+        return this;
+    }
+    @Step("get all brands list")
+    public UserManagementAPI getAllBrandsList() {
+        response = requestSpecification.get(getBrandsList);
+        LogsManager.info(response.asPrettyString());
         return this;
     }
 }
