@@ -14,11 +14,17 @@
 ## ✅Features
 
 ✔️ Framework Architecture – Developed using Java, Selenium, TestNG, and Maven, focusing on maintainability and scalability.
+
 ✔️ Design Patterns – Page Object Model (POM) and Fluent Pattern Approach for clean and scalable code.
+
 ✔️ Reusable Utilities – Smart actions for waits and element interactions for reliable and stable tests.
+
 ✔️ WebDriver Factory & Thread-Safety – For stable execution across browsers and driver management.
+
 ✔️ Comprehensive End-to-End Testing – Covers login, products, cart, checkout, and completion workflows using Data-Driven Testing (DDT) achieving high coverage.
+
 ✔️ Structured Logging – Log4j Integration for detailed logs and Custom Listeners for test monitoring.
+
 ✔️ Clear Reporting – Allure Reports providing real-time execution insights, step-level reporting, and failure analysis.
 
 ## Core Tech Stack :
