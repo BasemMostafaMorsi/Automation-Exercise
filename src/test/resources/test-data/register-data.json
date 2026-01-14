@@ -17,6 +17,7 @@
   "city": "Automation_City",
   "zipcode": "12345",
   "mobileNumber": "1234567890",
+  "search_product": "tshirt",
   "messages" :
   {
     "error": "Email Address already exist!"

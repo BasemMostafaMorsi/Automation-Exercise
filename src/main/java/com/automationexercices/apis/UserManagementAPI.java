@@ -31,6 +31,7 @@ public class UserManagementAPI {
     private static final String postProductList_endpoint = "/productsList";
     private static final String getBrandsList_endpoint = "/brandsList";
     private static final String putBrandsList_endpoint = "/brandsList";
+    private static final String searchProduct_endpoint = "/searchProduct";
 
     //api methods
     @Step("Create a new user account with full details")
@@ -138,5 +139,14 @@ public class UserManagementAPI {
         LogsManager.info(response.asPrettyString());
         verification.Equals(response.jsonPath().get("message") , "This request method is not supported." ,"error response");
         return this;
+    }
+    @Step("POST To Search Product")
+    public UserManagementAPI postToSearchProduct(String searchProduct) {
+        Map <String, String> formParams = new HashMap<>();
+        formParams.put("search_product", searchProduct);
+        response = requestSpecification.spec(Builder.getUserManagementRequestSpecification(formParams))
+                .post(searchProduct_endpoint);
+        return this;
+
     }
 }
