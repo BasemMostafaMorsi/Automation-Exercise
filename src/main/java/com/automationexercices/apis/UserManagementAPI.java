@@ -28,6 +28,7 @@ public class UserManagementAPI {
     private static final String createAccount_endpoint = "/createAccount";
     private static final String deleteAccount_endpoint = "/deleteAccount";
     private static final String getProductList_endpoint = "/productsList";
+    private static final String postProductList_endpoint = "/productsList";
 
     //api methods
     @Step("Create a new user account with full details")
@@ -114,6 +115,13 @@ public class UserManagementAPI {
     public UserManagementAPI getAllProductList() {
         response = requestSpecification.get(getProductList_endpoint);
         LogsManager.info(response.asPrettyString());
+        return this;
+    }
+    @Step("post all product list")
+    public UserManagementAPI postAllProductList() {
+        response = requestSpecification.post(postProductList_endpoint);
+        LogsManager.info(response.asPrettyString());
+        verification.Equals(response.jsonPath().get("message"), "This request method is not supported." , "error response");
         return this;
     }
 }
