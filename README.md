@@ -30,7 +30,9 @@
 ## Core Tech Stack :
 
 💠 Java | Selenium WebDriver | TestNG | Maven
+
 💠 Page Object Model (POM) | Fluent Pattern | Factory Pattern
+
 💠 Data-Driven Testing | Log4j | Allure Reports | XML suite
 
 ## 🧱 Project Structure
