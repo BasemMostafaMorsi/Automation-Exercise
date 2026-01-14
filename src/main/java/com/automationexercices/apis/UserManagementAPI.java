@@ -6,11 +6,14 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserManagementAPI {
+    private static final Logger log = LoggerFactory.getLogger(UserManagementAPI.class);
     RequestSpecification requestSpecification;
     Response response;
     Verification verification;
@@ -24,6 +27,7 @@ public class UserManagementAPI {
     //endpoints
     private static final String createAccount_endpoint = "/createAccount";
     private static final String deleteAccount_endpoint = "/deleteAccount";
+    private static final String getProductList_endpoint = "/productsList";
 
     //api methods
     @Step("Create a new user account with full details")
@@ -104,6 +108,12 @@ public class UserManagementAPI {
     public UserManagementAPI verifyUserDeletedSuccessfully() {
         verification.Equals(response.jsonPath().get("message"), "Account deleted!",
                 "User is not deleted successfully");
+        return this;
+    }
+    @Step("get all product list")
+    public UserManagementAPI getAllProductList() {
+        response = requestSpecification.get(getProductList_endpoint);
+        LogsManager.info(response.asPrettyString());
         return this;
     }
 }
